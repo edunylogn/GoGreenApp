@@ -1,0 +1,1 @@
+{"virtualbox":{"/var/www":{"owner":"vagrant","group":"www-data","guestpath":"/var/www","hostpath":"/Users/edu/Documents/Work/FL/GoGApp","disabled":false,"__vagrantfile":true}}}

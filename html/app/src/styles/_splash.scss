@@ -1,0 +1,21 @@
+.splash{
+  padding: 20px 0px;
+  background: url('../../src/img/body-bg.jpg') no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+  border-bottom: $brand-warning solid 4px;
+  .carousel{
+    border: 2px solid $brand-warning;
+    border-radius: 5px;
+    margin-bottom: 32px;
+    .carousel-indicators {
+      bottom: -39px;
+    }
+  }
+  .user-space{
+    background: rgba($well-bg, 0.6);
+    //background: rgba($brand-success, 0.6);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0px;
+  }
+}

@@ -22,37 +22,70 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
+        <?= isset($pageTitle)? $pageTitle : $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('styles.css');?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('font-awesome.min.css') ?>
+    <?= $this->Html->css('bootstrap-datetimepicker.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+    <nav class="navbar navbar-default" style="margin-bottom: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-nav" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><div class="brand-logo"></div></a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li><a target="_blank" href="http://localhotst:8081"><i class="fa fa-television fa-fw"></i></a></li>
+                <li><a href="/api/users"><i class="fa fa-users fa-fw"></i></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"><i class="fa fa-user fa-fw"></i><span class="caret"></span></a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><?= $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+                        <li role="separator" class="divider"></li>
+                        <li><?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
+
     <?= $this->Flash->render() ?>
     <?= $this->Flash->render('auth') ?>
-    <div class="container clearfix">
+    <div class="container-fluid clearfix" id="wrapper">
+        <?= $this->element('Common/loading');?>
+        <?php if($this->template != 'login'){
+            echo $this->element('Common/side_nav');
+        } ?>
         <?= $this->fetch('content') ?>
     </div>
     <footer>
     </footer>
+    
+
+    <?= $this->Html->script([
+        'libs/jquery.min.js',
+        'libs/moment.js',
+        'libs/bootstrap.min.js',
+        'libs/bootstrap-datetimepicker.min.js',
+        'libs/metisMenu.min.js',
+        'common/loading_toggle.js',
+        'common/global.js',
+        'menu/sidebar.js',
+    ]);?>
+    <?= $this->fetch('scriptBottom') ?>
 </body>
 </html>

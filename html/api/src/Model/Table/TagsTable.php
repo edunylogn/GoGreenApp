@@ -45,6 +45,12 @@ class TagsTable extends Table
             'targetForeignKey' => 'bookmark_id',
             'joinTable' => 'bookmarks_tags'
         ]);
+
+        $this->belongsToMany('Places', [
+            'foreignKey' => 'tag_id',
+            'targetForeignKey' => 'place_id',
+            'joinTable' => 'place_tags'
+        ]);
     }
 
     /**

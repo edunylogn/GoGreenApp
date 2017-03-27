@@ -1,0 +1,122 @@
+<?php
+namespace App\Controller;
+
+use App\Controller\AppController;
+use Cake\Event\Event;
+
+/**
+ * Features Controller
+ *
+ * @property \App\Model\Table\FeaturesTable $Features
+ */
+class FeaturesController extends AppController
+{
+
+    protected $feature_categories = [
+        'utilities' => 'Utilities',
+        'amenities' => 'Amenities',
+        'activities' => 'Activities'
+    ];
+
+    public function beforeRender(Event $event)
+    {
+        parent::beforeFilter($event);
+
+        $this->set('categories', $this->feature_categories);
+    }
+    /**
+     * Index method
+     *
+     * @return \Cake\Network\Response|null
+     */
+    public function index()
+    {
+        $features = $this->paginate($this->Features);
+
+        $this->set(compact('features'));
+        $this->set('_serialize', ['features']);
+    }
+
+    /**
+     * View method
+     *
+     * @param string|null $id Feature id.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view($id = null)
+    {
+        $feature = $this->Features->get($id, [
+            'contain' => ['PlaceFeatures']
+        ]);
+
+        $this->set('feature', $feature);
+        $this->set('_serialize', ['feature']);
+    }
+
+    /**
+     * Add method
+     *
+     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
+     */
+    public function add()
+    {
+        $feature = $this->Features->newEntity();
+        if ($this->request->is('post')) {
+            $feature = $this->Features->patchEntity($feature, $this->request->data);
+            if ($this->Features->save($feature)) {
+                $this->Flash->success(__('The feature has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The feature could not be saved. Please, try again.'));
+        }
+        $this->set(compact('feature'));
+        $this->set('_serialize', ['feature']);
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id Feature id.
+     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $feature = $this->Features->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $feature = $this->Features->patchEntity($feature, $this->request->data);
+            if ($this->Features->save($feature)) {
+                $this->Flash->success(__('The feature has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The feature could not be saved. Please, try again.'));
+        }
+        $this->set(compact('feature'));
+        $this->set('_serialize', ['feature']);
+    }
+
+    /**
+     * Delete method
+     *
+     * @param string|null $id Feature id.
+     * @return \Cake\Network\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $feature = $this->Features->get($id);
+        if ($this->Features->delete($feature)) {
+            $this->Flash->success(__('The feature has been deleted.'));
+        } else {
+            $this->Flash->error(__('The feature could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+}

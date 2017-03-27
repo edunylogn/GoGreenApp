@@ -1,0 +1,15 @@
+body{
+  @import "header";
+  @import "splash";
+  @import "footer";
+  background: $body-bg;
+
+  .page-wrapper{
+    @media screen and (min-width: $screen-sm) {
+      margin-top: $navbar-height;
+    }
+    @media screen and (max-width: $screen-sm) {
+      margin-top: $navbar-height/2;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.content-articles{
+  background: rgba(240, 173, 78, 0.28);
+  padding-top: 20px;
+  margin: 40px 0px;
+  .panel{
+    min-height: 385px;
+    background: rgba(240, 173, 78, 0.3);
+    img{
+      background: rgba(232, 243, 245, 0.6);
+      box-shadow: 8px 8px 0px -4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 0px;
+      margin: 20px 0px;
+    }
+  }
+}

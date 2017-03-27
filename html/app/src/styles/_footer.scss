@@ -1,0 +1,47 @@
+footer{
+  margin-top: 20px;
+  border-top: $brand-warning solid 4px;
+  .main-footer{
+    padding: 0px;
+    color: #fff;
+    background: url('../../src/img/body-bg.jpg') no-repeat center bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    a{
+      color: $brand-warning;
+      text-decoration: underline;
+    }
+    .footer-bg-extra{
+      padding: 30px 0px;
+      background: rgba($gray-dark, 0.7);
+    }
+  }
+  .social-footer{
+    color: $brand-primary;
+    a{
+      color: $brand-warning;
+    }
+    .social-facebook a{
+      color: #4267b2;
+    }
+    .social-twitter a{
+      color: #1da1f2;
+    }
+    .typcn{
+      font-size: 40px;
+    }
+
+    .colaborator-logos{
+      padding-top: 10px;
+      text-align: right;
+      li{
+        //float: right;
+        padding: 8px 5px;
+      }
+      img{
+        height: 40px;
+        vertical-align: bottom;
+      }
+    }
+  }
+}

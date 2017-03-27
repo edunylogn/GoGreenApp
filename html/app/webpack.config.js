@@ -60,7 +60,7 @@ module.exports = {
             loaders: ['babel-loader'],
             exclude: '/node_modules/'
         },{
-            test: /\.(jpe?g|png|gif|svg)$/,
+            test: /\.(jpe?g|png|gif)$/,
             loaders: ['url-loader?name=images/[hash:12].[ext]'],
             exclude: '/node_modules/'
         },{
@@ -68,15 +68,24 @@ module.exports = {
         //     loaders: cssLoader,
         //     exclude: '/node_modules/'
         // },{
-            test: /\.(css|scss)$/,
+            test: /\.scss$/,
             loaders: sassLoader,
             exclude: '/node_modules/'
-        },{
-            test: /\.(woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: ['url-loader?limit=10000&name=fonts/[hash:12].[ext]&minetype=application/font-woff']
-        },{
-            test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            loader: ['url-loader?limit=100000&name=fonts/[hash:12].[ext]']
+        }, {
+            test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+            loaders: ["url-loader?mimetype=application/font-woff"]
+        }, {
+            test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+            loaders: ["url-loader?mimetype=application/font-woff"]
+        }, {
+            test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+            loaders: ["url-loader?mimetype=application/octet-stream"]
+        }, {
+            test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+            loaders: ["file-loader"]
+        }, {
+            test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+            loaders: ["url-loader?&mimetype=image/svg+xml"]
         }
         ]
     },

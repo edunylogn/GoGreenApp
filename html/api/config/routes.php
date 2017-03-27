@@ -67,6 +67,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+
+    $routes->extensions(['json', 'html']);
     /**
      * Connect catchall routes for all controllers.
      *
@@ -83,6 +85,10 @@ Router::scope('/', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
+
+    Router::connect('/hotels/:action/*', array('controller'=>'places'));
+    Router::connect('/hotels/*', array('controller'=>'places'));
+    
     $routes->fallbacks(DashedRoute::class);
 });
 

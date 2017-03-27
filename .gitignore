@@ -1,3 +1,6 @@
 /.idea
 /html/app/node_modules
 .DS_Store
+/newcake.box
+/html/api/composer.lock
+/html/api/composer.json
