@@ -1,0 +1,12 @@
+.splash{
+  @media screen and (min-width: $screen-sm) {
+    margin-top: $navbar-height;
+  }
+  @media screen and (max-width: $screen-sm) {
+    margin-top: $navbar-height/2;
+  }
+  padding: 20px 0px;
+  background: url('../../../src/img/body-bg.jpg') no-repeat center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
