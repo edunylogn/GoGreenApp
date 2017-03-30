@@ -11,9 +11,8 @@ $cellRoomPriceDetails = $this->cell('RoomPriceDetails');
             <h1 class="page-header"><?= __('Add Hotel') ?></h1>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#1add"  data-toggle="tab">Basic Information</a></li>
-                <li><a href="#2add" data-toggle="tab">Address</a></li>
-                <li><a href="#3add" data-toggle="tab">Prices</a></li>
-                <li><a href="#4add" data-toggle="tab">Images</a></li>
+                <li><a href="#2add" data-toggle="tab">Prices</a></li>
+                <li><a href="#3add" data-toggle="tab">Images</a></li>
             </ul>
         </div>
     </div>
@@ -27,12 +26,15 @@ $cellRoomPriceDetails = $this->cell('RoomPriceDetails');
                             <?php
                             echo $this->Form->input('name');
                             echo $this->Form->input('description');
+                            echo $this->Form->input('rating', ['options' => [1,2,3,4,5], 'type' => 'radio']);
                             ?>
                         </div>
                         <div class="col-md-6">
                             <?php
-                            echo $this->Form->input('phone');
-                            echo $this->Form->input('email');
+                            echo $this->Form->input('region_id', ['options' => $regions, 'empty' => '(choose one)']);
+                            echo $this->Form->input('latitude');
+                            echo $this->Form->input('longitude');
+                            echo $this->Form->input('maps_url');
                             ?>
                         </div>
                     </div>
@@ -52,33 +54,12 @@ $cellRoomPriceDetails = $this->cell('RoomPriceDetails');
                 </div>
                 <div class="tab-pane" id="2add">
                     <div class="row">
-                        <div class="col-md-6">
-                            <?php
-                            echo $this->Form->input('line_1');
-                            echo $this->Form->input('line_2');
-                            echo $this->Form->input('city');
-                            echo $this->Form->input('state');
-                            echo $this->Form->input('zip');
-                            ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?php
-                            echo $this->Form->input('nearest_street');
-                            echo $this->Form->input('region_id', ['options' => $regions, 'empty' => '(choose one)']);
-                            echo $this->Form->input('latitude');
-                            echo $this->Form->input('longitude');
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="3add">
-                    <div class="row">
                         <div class="col-xs-12">
                             <?= $cellRoomPriceDetails ?>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="4add">
+                <div class="tab-pane" id="3add">
                     <div class="row">
                         <div class="col-xs-12">
                             <?= $cellImageSelector ?>

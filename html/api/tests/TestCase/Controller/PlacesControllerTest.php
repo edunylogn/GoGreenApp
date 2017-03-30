@@ -18,15 +18,10 @@ class PlacesControllerTest extends IntegrationTestCase
     public $fixtures = [
         'app.places',
         'app.regions',
-        'app.tags',
-        'app.bookmarks',
-        'app.users',
-        'app.bookmarks_tags',
-        'app.place_tags',
-        'app.features',
         'app.place_features',
-        'app.images',
         'app.place_images',
+        'app.images',
+        'app.place_tags',
         'app.room_price_details',
         'app.room_categories'
     ];
@@ -77,6 +72,16 @@ class PlacesControllerTest extends IntegrationTestCase
      * @return void
      */
     public function testDelete()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test cell method
+     *
+     * @return void
+     */
+    public function testCell()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

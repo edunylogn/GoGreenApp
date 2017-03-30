@@ -9,24 +9,16 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $name
  * @property string $description
- * @property string $nearest_street
- * @property string $line_1
- * @property string $line_2
- * @property string $city
- * @property string $state
- * @property string $zip
  * @property string $region_id
  * @property string $latitude
  * @property string $longitude
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
- * @property string $phone
- * @property string $email
+ * @property bool $completed
+ * @property int $rating
+ * @property string $maps_url
  *
  * @property \App\Model\Entity\Region $region
- * @property \App\Model\Entity\Tag[] $tags
- * @property \App\Model\Entity\Feature[] $features
- * @property \App\Model\Entity\Image[] $images
  * @property \App\Model\Entity\PlaceFeature[] $place_features
  * @property \App\Model\Entity\PlaceImage[] $place_images
  * @property \App\Model\Entity\PlaceTag[] $place_tags

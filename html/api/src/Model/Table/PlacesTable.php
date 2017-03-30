@@ -97,34 +97,21 @@ class PlacesTable extends Table
             ->notEmpty('description');
 
         $validator
-            ->allowEmpty('nearest_street');
-
-        $validator
-            ->allowEmpty('line_1');
-
-        $validator
-            ->allowEmpty('line_2');
-
-        $validator
-            ->allowEmpty('city');
-
-        $validator
-            ->allowEmpty('state');
-
-        $validator
-            ->allowEmpty('zip');
-
-        $validator
             ->allowEmpty('latitude');
 
         $validator
             ->allowEmpty('longitude');
 
         $validator
-            ->allowEmpty('phone');
+            ->boolean('completed')
+            ->allowEmpty('completed');
 
         $validator
-            ->allowEmpty('email');
+            ->integer('rating')
+            ->allowEmpty('rating');
+
+        $validator
+            ->allowEmpty('maps_url');
 
         return $validator;
     }
@@ -138,7 +125,7 @@ class PlacesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-//        $rules->add($rules->existsIn(['region_id'], 'Regions'));
+        $rules->add($rules->existsIn(['region_id'], 'Regions'));
         $rules->add($rules->isUnique(['name']));
         return $rules;
     }

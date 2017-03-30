@@ -26,15 +26,10 @@ class PlacesTableTest extends TestCase
     public $fixtures = [
         'app.places',
         'app.regions',
-        'app.tags',
-        'app.bookmarks',
-        'app.users',
-        'app.bookmarks_tags',
-        'app.place_tags',
-        'app.features',
         'app.place_features',
-        'app.images',
         'app.place_images',
+        'app.images',
+        'app.place_tags',
         'app.room_price_details',
         'app.room_categories'
     ];

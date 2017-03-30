@@ -1,16 +1,17 @@
 import React                            from 'react';
+import { Provider }                     from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import {TransitionMotion, spring}       from 'react-motion'
-import TopMenu                          from './Components/Presentation/TopMenu';
-import Footer                           from './Components/Presentation/Footer';
-import Home                             from './Containers/Home';
-import About                            from './Containers/About';
-import Hotels                           from './Containers/Hotels';
-import Hotel                            from './Containers/Hotel';
-import Tours                            from './Containers/Tours';
-import Transport                        from './Containers/Transport';
-import Packages                         from './Containers/Packages';
-import Package                          from './Containers/Package';
+import configureStore                   from './store/configureStore';
+import TopMenu                          from './components/Presentation/TopMenu';
+import Footer                           from './components/Presentation/Footer';
+import Home                             from './containers/Home';
+import About                            from './containers/About';
+import Hotels                           from './containers/Hotels';
+import Hotel                            from './containers/Hotel';
+import Tours                            from './containers/Tours';
+import Transport                        from './containers/Transport';
+import Packages                         from './containers/Packages';
+import Package                          from './containers/Package';
 
 const routes = [
     { path: '/home',
@@ -39,18 +40,24 @@ const routes = [
     }
 ]
 
+const store = configureStore();
+
+store.dispatch(loadHotels());
+
 const App = () => (
-    <Router>
-        <div>
-            <TopMenu/>
-            {routes.map((route, index) => (
-                <Route key={index} path={route.path} component={route.main}/>
-            ))}
-            <Route exact path="/" render={() => (
-                <Redirect to="/home"/>
-              )}/>
-            <Footer/>
-        </div>
-    </Router>
+    <Provider store={store}>
+        <Router>
+            <div>
+                <TopMenu/>
+                {routes.map((route, index) => (
+                    <Route key={index} path={route.path} component={route.main}/>
+                ))}
+                <Route exact path="/" render={() => (
+                    <Redirect to="/home"/>
+                  )}/>
+                <Footer/>
+            </div>
+        </Router>
+    </Provider>
 )
 export default App;

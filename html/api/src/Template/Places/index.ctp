@@ -13,9 +13,6 @@
                         <tr>
                             <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                             <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                            <th scope="col"><?= $this->Paginator->sort('phone') ?></th>
-                            <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                            <th scope="col"><?= $this->Paginator->sort('nearest_street') ?></th>
                             <th scope="col" class="actions"><?= __('Actions') ?></th>
                         </tr>
                         </thead>
@@ -24,9 +21,6 @@
                             <tr>
                                 <td><?= $this->Number->format($place->id) ?></td>
                                 <td><?= h($place->name) ?></td>
-                                <td><?= h($place->phone) ?></td>
-                                <td><?= h($place->email) ?></td>
-                                <td><?= h($place->nearest_street) ?></td>
                                 <td class="actions">
                                     <div class="btn-group">
                                         <?= $this->Html->link(__('View'), ['action' => 'view', $place->id], ['class'=> 'btn btn-sm btn-info']) ?>

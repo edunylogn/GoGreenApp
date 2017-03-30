@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
-import Select from 'react-select';
-import DatePicker from 'react-bootstrap-date-picker';
+import React, { PropTypes } from 'react';
+import {connect}            from 'react-redux';
+import * as catActions      from '../../actions/catActions';
+import HotelList            from './HotelList';
+import Select               from 'react-select';
+import DatePicker           from 'react-bootstrap-date-picker';
 import '../../styles/react-select/default.scss';
 import '../../styles/_search.scss';
 
 
-class Hotels extends Component {
+class HotelsPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -93,6 +96,12 @@ class Hotels extends Component {
                         <div className="col-md-10 col-md-offset-1">
                             <div className="row text-center">
                                 <h2>18 hotels found</h2>
+                                <HotelList hotels={this.props.hotels} />
+
+
+
+
+
                                 <div className="col-md-3 col-sm-6 hero-feature">
                                     <div className="thumbnail">
                                         <img src="http://placehold.it/800x500" alt=""/>
@@ -471,4 +480,15 @@ class Hotels extends Component {
         );
     }
 }
-export default Hotels;
+
+HotelsPage.propTypes = {
+    hotels: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+    return {
+        hotels: state.hotels
+    };
+}
+
+export default connect(mapStateToProps)(HotelsPage);

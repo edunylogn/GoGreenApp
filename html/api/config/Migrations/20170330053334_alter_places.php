@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class AlterPlacesTable extends AbstractMigration
+class AlterPlaces extends AbstractMigration
 {
     /**
      * Change Method.
@@ -32,6 +32,8 @@ class AlterPlacesTable extends AbstractMigration
             'default' => null,
             'null' => true,
         ]);
+        $table->removeColumn('email');
+        $table->removeColumn('phone');
         $table->update();
     }
 }

@@ -19,52 +19,20 @@ $cellRoomPriceDetails = $this->cell('RoomPriceDetails::view', [$place->id, false
                             <td><?= h($place->name) ?></td>
                         </tr>
                         <tr>
-                            <th scope="row"><?= __('Nearest Street') ?></th>
-                            <td><?= h($place->nearest_street) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('Line 1') ?></th>
-                            <td><?= h($place->line_1) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('Line 2') ?></th>
-                            <td><?= h($place->line_2) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('City') ?></th>
-                            <td><?= h($place->city) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('State') ?></th>
-                            <td><?= h($place->state) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('Zip') ?></th>
-                            <td><?= h($place->zip) ?></td>
+                            <th scope="row"><?= __('Rating') ?></th>
+                            <td><?= h($place->rating) ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?= __('Region') ?></th>
                             <td><?= $place->has('region') ? $this->Html->link($place->region->name, ['controller' => 'Regions', 'action' => 'view', $place->region->id]) : '' ?></td>
                         </tr>
                         <tr>
-                            <th scope="row"><?= __('Latitude') ?></th>
-                            <td><?= h($place->latitude) ?></td>
+                            <th scope="row"><?= __('Location') ?></th>
+                            <td><?= h($place->maps_url) ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?= __('Longitude') ?></th>
                             <td><?= h($place->longitude) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('Phone') ?></th>
-                            <td><?= h($place->phone) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('Email') ?></th>
-                            <td><?= h($place->email) ?></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><?= __('Id') ?></th>
-                            <td><?= $this->Number->format($place->id) ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?= __('Created') ?></th>
